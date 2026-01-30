@@ -1,0 +1,62 @@
+/*
+Nombre: Jose Manuel Enriquez Rodriguez
+Matricula: 2132982
+Grupo: 031
+Tarea 5
+leer un valor m y un valor n, m representa la cantidad de filas y n la cantidad de columnas, llenar la primer columna con los n valores que se van a leer y luego colocar en la ultima columna de la matriz cada uno de los valores leídos multiplicado por dos. después de eso trabajar con el arreglo de dos dimensiones para mostrar cada uno de los valores n leídos y obtener el promedio de los valores de la ultima columna del arreglo de dos dimensiones.
+si m es mayor que n, entonces en la primer columna si van a caber los n valores. pero si la n es mayor que el valor de la m, entonces van a rellenar la primera y la ultima columna con los otros valores.
+
+*/
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+    int m, n;
+    cout << "Ingresa la cantidad de filas: ";
+    cin >> m;
+
+    cout << "Ingresa la cantidad de columnas: ";
+    cin >> n;
+
+    vector< vector<int> > matriz(m, vector<int>(n, 0));
+
+    vector<int> valores(n);
+
+    // Leer n valores
+    for (int i = 0; i < n; i++)
+    {
+        cout << "Ingresa el valor " << i + 1 << ": ";
+        cin >> valores[i];
+    }
+
+    // Llenar primera columna
+    for (int i = 0; i < m; i++)
+    {
+        matriz[i][0] = valores[i % n];
+    }
+
+    // Llenar ultima columna (valores de la primera × 2)
+    int sumaUltima = 0;
+    for (int i = 0; i < m; i++)
+    {
+        matriz[i][n - 1] = matriz[i][0] * 2;
+        sumaUltima += matriz[i][n - 1];
+    }
+
+    // Imprimir ultima columna
+    cout << "\nValores de la ultima columna:\n";
+    for (int i = 0; i < m; i++)
+    {
+        cout << matriz[i][n - 1] << endl;
+    }
+
+    double promedio = (double)sumaUltima / m;
+    cout << "\nPromedio de la ultima columna: " << promedio << endl;
+
+    return 0;
+}
