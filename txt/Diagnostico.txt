@@ -1,0 +1,52 @@
+/*
+Nombre: José Manuel Enríquez Rodríguez
+Matricula: 2132982
+Descripcioó del problema:
+Leer un valor n y luego leer n datos enteros numéricos.
+Almacenar en un vector solo los valores pares, después trabajar en los datos del vector para obtener el promedio de los múltiplos de 4.
+También mostrar los datos del vector
+*/
+#include <iostream>
+#include <vector>
+
+
+using namespace std;
+
+
+int main () {
+   int n, value;
+   int quantity = 0;
+   int sum = 0;
+   vector <int> vectorPares;
+
+
+   cout << "Ingresa la cantidad de elementos: ";
+   cin>>n;
+
+
+   for (int i = 0; i < n; i++) {
+       cin >> value;
+       if (value % 2 == 0) {
+           vectorPares.push_back(value);
+       }
+   }
+
+
+   cout << "Valores pares en el vector: ";
+   for (int i = 0; i < vectorPares.size(); i++) {
+       cout << vectorPares[i] << " ";
+       if (vectorPares[i] % 4 == 0) {
+           sum = vectorPares[i] + sum;
+           quantity++;
+       }
+   }
+
+
+   if (quantity > 0) {
+       cout << "\nPromedio es: " << sum / quantity << endl;
+   } else {
+       cout << "\nNo se encontraron multiplos de 4 para promediar." << endl;
+   }
+   return 0;
+}
+
