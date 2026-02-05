@@ -1,0 +1,18 @@
+/*
+ * Ejercicio 6
+ * Nombre: Jose Manuel Enriquez Rodriguez
+ * Matricula: 2132982
+* Problema:Karel inicia con dirección al este, en las siguientes 10 cuadras al este, deberá colocar 9 beepers en cada una de esas 10 cuadras. Karel inicia con suficientes trompos en la mochila para cumplir con su tarea.
+ *
+ */
+
+
+class program {
+    program(){
+        iterate(10){
+            move;
+            iterate(9) putbeeper();
+        }
+    }
+    turnoff();
+}

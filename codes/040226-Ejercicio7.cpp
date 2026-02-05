@@ -1,0 +1,60 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    int n;
+    int matriz[10][10] = {0}; // Inicializamos en 0
+    
+    cout << "Ingrese la cantidad de valores (n <= 100): ";
+    cin >> n;
+
+    if (n > 100 || n < 0) {
+        cout << "Valor de n fuera de rango." << endl;
+        return 1;
+    }
+
+    // 1. Leer n valores y acomodarlos en la matriz
+    cout << "Ingrese los " << n << " valores:" << endl;
+    for (int i = 0; i < n; i++) {
+        int fila = i / 10;
+        int columna = i % 10;
+        cin >> matriz[fila][columna];
+    }
+
+    // 2. Procesar la matriz para pares
+    int sumaPares = 0;
+    int contadorPares = 0;
+    int mayorPar = -2147483648; // Valor mínimo posible para un int
+    bool huboPares = false;
+
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            // Solo procesamos las posiciones que fueron llenadas (hasta n)
+            if ((i * 10 + j) < n) {
+                if (matriz[i][j] % 2 == 0) {
+                    sumaPares += matriz[i][j];
+                    contadorPares++;
+                    
+                    if (matriz[i][j] > mayorPar) {
+                        mayorPar = matriz[i][j];
+                    }
+                    huboPares = true;
+                }
+            }
+        }
+    }
+
+    // 3. Mostrar resultados
+    cout << "\n--- Resultados ---" << endl;
+    if (huboPares) {
+        double promedio = static_cast<double>(sumaPares) / contadorPares;
+        cout << "Promedio de los pares: " << promedio << endl;
+        cout << "El mayor de los pares: " << mayorPar << endl;
+    } else {
+        cout << "No se ingresaron números pares." << endl;
+    }
+
+    return 0;
+}
