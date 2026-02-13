@@ -1,0 +1,41 @@
+/*
+Nombre: Jose Manuel Enriquez Rodriguez
+Matricula: 2132982
+Ejercicio 11
+Problema: Leer n cadenas y contar cuantas vocales y consonantes tiene
+*/
+
+
+#include <vector>
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    vector<string> palabras;
+    int n;
+
+    cout << "Ingresa la cantidad de palabras: ";
+    cin >> n;
+
+    for(int i = 0; i < n; i++)
+    {
+        string cadena;
+        cout << "Ingresa la cadena " << i + 1 << ": ";
+        cin >> cadena;
+        palabras.push_back(cadena);
+    }
+
+    for (int i = 0; i < n; i++) {
+    	string palabra = palabras[i];
+        int vocal = 0, consonante = 0;
+        for (int c = 0; c < palabra.size(); c++) {
+             (palabra[c] == 'a' || palabra[c] == 'e' || palabra[c] == 'i' || palabra[c] == 'o' || palabra[c] == 'u') ? vocal++ : consonante++;
+        }
+        cout << "La cadena: " << palabra << " tiene " << vocal << " vocales y " << consonante << " consonantes" << endl;;
+    }
+    return 0;
+}
+
